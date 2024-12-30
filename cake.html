@@ -68,26 +68,17 @@
             function detectBlow() {
                 analyser.getByteFrequencyData(dataArray);
                 const average = dataArray.reduce((acc, val) => acc + val, 0) / bufferLength;
-
-                // Adjust this threshold according to your environment
                 const threshold = 50;
 
                 if (average > threshold) {
-                    // Hide the flame
                     flame.style.opacity = 0;
-
-                    // Change the message text
                     message.textContent = "May all your wishes come true!";
-
-                    // Trigger confetti
                     confetti({
                         particleCount: 100,
                         spread: 70,
                         origin: { y: 0.6 }
                     });
-
-                    // Keep the confetti going for a bit
-                    const duration = 3 * 1000; // 3 seconds
+                    const duration = 2 * 1000;
                     const end = Date.now() + duration;
 
                     (function frame() {
